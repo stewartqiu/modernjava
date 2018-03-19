@@ -25,7 +25,7 @@ SECRET_KEY = '6ml^)%mpd+1$z*3r!*rg1qbcm*vyg569tqyl7hsp@7xw%y^u*='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['modern-java.com']
 
 
 # Application definition
@@ -52,10 +52,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'modernjava.urls'
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': [TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
