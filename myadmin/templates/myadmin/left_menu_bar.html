@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'myadmin/css/left_bar.css'%}">
+
+<div id="leftBar">
+	<div class="square">
+		<a class="square-content" href="{% url 'myadmin:import_siswa' %}">
+			<img src="{% static 'myadmin/img/xls.png' %}">
+			<h6>Import Siswa</h6>
+		</a>
+	</div>
+		
+			
+	<div class="square">
+		<a class="square-content" href="{% url 'myadmin:import_kd' %}">
+			<img src="{% static 'myadmin/img/xls.png' %}">
+			<h6>Import KD</h6>
+		</a>
+	</div>
+
+	<div class="square">
+		<a class="square-content" href="{% url 'myadmin:entry_guru' %}">
+			<img src="">
+			<h6>Entry Data Guru</h6>
+		</a>
+	</div>
+		
+<!-- 	<div class="square">
+		<a class="square-content" href="https://www.google.com">
+			<img src="{% static 'img/xls.png' %}">
+			<h6>Import Siswa</h6>
+		</a>
+	</div>
+			
+	<div class="square">
+		<a class="square-content" href="https://www.facebook.com">
+			<img src="{% static 'img/xls.png' %}">
+			<h6>Import Guru</h6>
+		</a>
+	</div>
+			
+	<div class="square">
+		<a class="square-content" href="https://www.youtube.com">
+				<img src="{% static 'img/xls.png' %}">
+			<h6>Import KD</h6>
+		</a>
+		</div> -->
+</div>

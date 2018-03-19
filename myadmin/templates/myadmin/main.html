@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'myadmin/css/main.css' %}">
+{% endblock %}
+
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-6 menu-container">
+			<h1>Menu Admin</h1>
+			<div class="square">
+				<a class="square-content" href="{% url 'myadmin:import_siswa' %}">
+					<img src="{% static 'myadmin/img/xls.png' %}">
+					<h6>Import Siswa</h6>
+				</a>
+			</div>
+
+			<div class="square">
+				<a class="square-content" href="{% url 'myadmin:import_kd' %}">
+					<img src="{% static 'myadmin/img/xls.png' %}">
+					<h6>Import KD</h6>
+				</a>
+			</div>
+
+			<div class="square">
+				<a class="square-content" href="{% url 'myadmin:entry_guru' %}">
+					<img src="">
+					<h6>Entry Data Guru</h6>
+				</a>
+			</div>
+
+			<div class="square">
+				<a class="square-content" href="#">
+					<img src="{% static 'myadmin/img/rupiah.png'%}">
+					<h6>SPP</h6>
+				</a>
+			</div>
+
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
+	</div>
+{% endblock %}
