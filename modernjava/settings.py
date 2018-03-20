@@ -25,7 +25,7 @@ SECRET_KEY = '6ml^)%mpd+1$z*3r!*rg1qbcm*vyg569tqyl7hsp@7xw%y^u*='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['modern-java.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -126,3 +126,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+
+
+

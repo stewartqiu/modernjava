@@ -1,3 +1,5 @@
+
+
 from uuid import getnode as get_mac
 import subprocess
 import os
@@ -17,13 +19,8 @@ def getMacAddress():
 def getDiskId():
 	osName = getOsName2()
 	if osName == "windows":
-		import wmi
-		c = wmi.WMI()
-		val = ""
-		for item in c.Win32_PhysicalMedia():
-    		 val += item
 		
-		return val
+		return 
 	else:
 		return os.popen("/usr/sbin/system_profiler SPHardwareDataType | fgrep 'Serial' | awk '{print $NF}'").read()  
 
@@ -56,6 +53,8 @@ def bacaExcel(file):
 			data[key] = rowData[nCol].value
 		rows.append(data)
 	return rows
+
+
 
 
 

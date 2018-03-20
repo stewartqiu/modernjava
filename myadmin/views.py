@@ -52,7 +52,7 @@ def importSiswa(request):
 		return redirect(reverse('myadmin:konfirm_import_siswa'))
 		#return render(request, "myadmin/import_siswa.html", {'postResult' : siswaList[0]})
 
-	return render(request, "myadmin/import_siswa.html", {"test": stool.getDiskId()})
+	return render(request, 'myadmin/import_siswa.html', {'test': stool.getDiskId()})
 
 def konfirmImportSiswa(request):
 	# data = request.data
@@ -91,9 +91,19 @@ def importKd(request):
 
 
 
-
 def entryGuru(request):
 	return render(request, "myadmin/entry_guru.html")
 
+	
+
 def spp(request):
 	return render(request, "myadmin/spp.html")
+
+
+
+
+
+
+
+
+

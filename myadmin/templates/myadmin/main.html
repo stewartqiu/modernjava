@@ -26,20 +26,32 @@
 
 			<div class="square">
 				<a class="square-content" href="{% url 'myadmin:entry_guru' %}">
-					<img src="">
-					<h6>Entry Data Guru</h6>
+					<img src="{% static 'myadmin/img/xls.png' %}">
+					<h6>Import Guru</h6>
 				</a>
 			</div>
 
 			<div class="square">
 				<a class="square-content" href="#">
 					<img src="{% static 'myadmin/img/rupiah.png'%}">
-					<h6>SPP</h6>
+					<h6>Pembayaran SPP</h6>
 				</a>
 			</div>
 
-			<div class="square"></div>
-			<div class="square"></div>
+			<div class="square">
+				<a class="square-content" href="#">
+					<img src="{% static 'myadmin/img/rupiah.png'%}">
+					<h6>Tools</h6>
+				</a>
+			</div>
+
+
+			<div class="square">
+				<a class="square-content" href="#">
+					<img src="{% static 'myadmin/img/rupiah.png'%}">
+					<h6>Pengaturan</h6>
+				</a>
+			</div>
 		</div>
 	</div>
 {% endblock %}
