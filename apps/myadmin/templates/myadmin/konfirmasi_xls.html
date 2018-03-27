@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head%}
+	<link rel="stylesheet" type="text/css" href="{% static 'myadmin/css/table.css' %}">
+{% endblock %}
+{% block content %}
+	<br>
+
+	
+	<div class="table-container">	
+		<div class="table">
+			<div class="table-header">
+				<div class="header__item"><a id="" class="filter__link" href="#">NIS</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Nama</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Kelas</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Tahun</a></div>
+				<div class="header__item"><a id="" class="filter__link filter__link--number" href="#">Nilai SPP</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Hp Siswa</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Hp Ortu 1</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Hp Ortu 2</a></div>
+				<div class="header__item"><a id="" class="filter__link" href="#">Hp Wali</a></div>
+			</div>
+			<div class="table-content">	
+				{% if dataList %}
+					{% for data in dataList %}
+					<div class="table-row">	
+						<div class="table-data">{{ data.col0 }}</div>
+						<div class="table-data">{{ data.col1 }}</div>
+						<div class="table-data">{{ data.col2 }}</div>
+						<div class="table-data">{{ data.col3 }}</div>
+						<div class="table-data">{{ data.col4 }}</div>
+						<div class="table-data">{{ data.col5 }}</div>
+						<div class="table-data">{{ data.col6 }}</div>
+						<div class="table-data">{{ data.col7 }}</div>
+						<div class="table-data">{{ data.col8 }}</div>
+					</div>
+					{% endfor %}	
+				{% endif %}
+				<!-- <div class="table-row">		
+					<div class="table-data">00001</div>
+					<div class="table-data">Andi Susanto</div>
+					<div class="table-data">10 MIA 1</div>
+					<div class="table-data">2018</div>
+					<div class="table-data">600000</div>
+					<div class="table-data">081239397825</div>
+					<div class="table-data">08568584358</div>
+					<div class="table-data">08981282888</div>
+					<div class="table-data">-</div>
+				</div>
+				<div class="table-row">
+					<div class="table-data">00001</div>
+					<div class="table-data">Andi</div>
+					<div class="table-data">10 MIA 1</div>
+					<div class="table-data">2018</div>
+					<div class="table-data">600000</div>
+					<div class="table-data">081239397825</div>
+					<div class="table-data">08568584358</div>
+					<div class="table-data">08981282888</div>
+					<div class="table-data">-</div>
+				</div>
+				<div class="table-row">
+					<div class="table-data">00001</div>
+					<div class="table-data">Andi</div>
+					<div class="table-data">10 MIA 1</div>
+					<div class="table-data">2018</div>
+					<div class="table-data">600000</div>
+					<div class="table-data">081239397825</div>
+					<div class="table-data">08568584358</div>
+					<div class="table-data">08981282888</div>
+					<div class="table-data">-</div>
+				</div> -->
+			</div>	
+		</div>
+	</div>
+
+
+	<div class="container">
+		<form method='post' action="">
+    		{% csrf_token %}
+    		<input type='hidden' value='{{ dataList|safe }}' name='dataList'>
+			<button type="submit">Simpan</button>
+		</form>
+	</div>
+{% endblock %}
+
+
+{% block script %}
+	<!-- <script type="text/javascript" src="{% static 'myadmin/js/konfirmasi_xls.js' %}"></script> -->
+
+	<script type="text/javascript">
+
+		var data = {{dataList|safe}}
+
+		$("form").submit(function() {
+			event.preventDefault();
+			var dataList = JSON.stringify(data)
+			var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+			var formData = new FormData();
+			formData.append('dataList', dataList);
+			formData.append('csrfmiddlewaretoken', csrftoken);
+			$.ajax({
+				type: "POST",
+			 	url: $(this).attr('action'),
+			 	data: formData,
+			 	contentType: false,
+			 	cache: false,
+			 	processData: false,
+			 	success: function(response) { // on success..
+			    	console.log(response)
+			  	},
+			  	error: function(e, x, r) { // on error..
+			    	console.log(r);
+			  	}
+			});
+			return false;
+		});
+	</script>
+{% endblock %}
+
+
+
+
+
+
+

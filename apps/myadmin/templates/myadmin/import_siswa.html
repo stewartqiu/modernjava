@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+	
+	{% include 'myadmin/left_menu_bar.html' %}
+	
+	<div id="rightContent">
+		<div class="container">
+			<h3>
+				Import Siswa
+			</h3>
+			<br>
+			<h5>Siapkan file excel dengan format seperti berikut</h5>
+			<img class="icon-format" src="{% static 'myadmin/img/formatkdfix.png'%}">
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-6">
+					<h6 >
+						Keterangan
+					</h6>
+					<ol>
+						<li>Baris 1 merupakan header. Baris 2 dan seterusnya merupakan data.</li>
+						<li>Kolom data harus sesuai dengan format di atas.</li>
+						<li>PENTING! Setiap KD harus memiliki kode yang berbeda. Jika ada kode yang sama, hanya 1 KD yang akan disimpan.</li>
+						<li>Nomor urut dikosongkan jika tidak ingin ditampilkan ke rapor.</li>
+						<li>Kumpulkan semua data KD dalam 1 sheet file excel.</li>
+					</ol>
+				</div>
+
+				<div class="col-md-5 offset-md-1">
+					<h6><em>Sudah punya file?</em></h6>
+						{% if wrong_message %}
+							<div class="alert alert-danger" role="alert" style="margin-top: 10px; text-align: center; width: 400px; padding: 10px; font-size: 18px;">
+			 	 				{{ wrong_message }}
+							</div>
+						{% endif %}
+					<div style="background-color: #b6cbed; padding: 20px; width: 400px; ">
+						<h5 style="text-align: center; margin-top: 0; margin-bottom: 15px;">Upload File</h5>
+						<form method="post" action="{% url 'myadmin:konfirmasi_xls_siswa' %}" enctype="multipart/form-data" id="form-input-xls-siswa" autocomplete="false">
+							{% csrf_token %}
+							<div>
+								<input type="file" name="pickExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required style="background-color: white; width: 100%">
+								<button class="btn btn-success btn-md" type="submit" name="submit" style="width: 100%; margin-top: 10px;">Import</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			{% if postResult %}
+				<li>Mapel: {{ postResult.nis }}</li>
+				<li>Kelas: {{ postResult.nama }}</li>
+				<li>Jurusan: {{ postResult.jurusan }}</li>
+				<li>Semester: {{ postResult.semester }}</li>
+				<li>No Urut: {{ postResult.noUrut }}</li>
+				<li>Jenis: {{ postResult.jenis }}</li>
+				<li>Kode: {{ postResult.kode }}</li>
+				<li>{{ postResult|length }}</li>
+			{% endif %}
+
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<!-- <script type="text/javascript" src="{% static 'myadmin/js/import_siswa.js' %}"></script> -->
+{% endblock %}
+
+
+
+
+

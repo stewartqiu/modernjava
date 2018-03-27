@@ -1,0 +1,4 @@
+Django==2.0.2
+mysqlclient==1.3.12
+Pyrebase==3.0.27
+xlrd==1.1.0
